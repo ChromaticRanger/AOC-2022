@@ -1,9 +1,14 @@
 import run from "aocrunner";
+import Test from "./test.js";
 
 class FileSystem {
-  private _directories: Map<string, Directory>;
+  private _directories: Map<string, Directory> = new Map<string, Directory>();
+  private test: Test = new Test();
   constructor() {
-
+    const num: number = this.test.reply();
+    this._directories.set('/', new Directory('/'));
+    console.log(num);
+    console.log(this._directories);
   }
 
   /**
@@ -16,13 +21,13 @@ class FileSystem {
 
 }
 class Directory {
-  /**
-   * Child directories of this directory
+  private readonly _name: string = '';
+  private _dirs: Directory[] = [];
+  /*
+   * Files in this directory
    * @private
    */
-  private _dirs: Directory[] = null;
-  private _name: string = null;
-  private _files: File[] = null;
+  private _files: File[] = [];
   private _size: number = 0;
 
   /**
@@ -60,9 +65,9 @@ const parseInput = (rawInput: string) => rawInput;
 
 const part1 = (rawInput: string) => {
   const input = parseInput(rawInput);
-  const test = new Directory();
+  const test = new Test();
   const lines: string[] = input.split( '\n' );
-  console.log( lines[0] )
+  console.log( test.reply() );
   console.log( lines[1] );
 
   return 95437;

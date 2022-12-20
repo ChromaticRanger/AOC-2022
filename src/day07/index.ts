@@ -1,26 +1,43 @@
 import run from "aocrunner";
 
+class FileSystem {
+  private _directories: Map<string, Directory>;
+  constructor() {
+
+  }
+
+  /**
+   * Move to the parent of the passed in directory
+   * @param dir - The current directory
+   */
+  up = (dir: Directory) => {
+    // dir.Name
+  };
+
+}
 class Directory {
   /**
    * Child directories of this directory
    * @private
    */
   private _dirs: Directory[] = null;
-  /**
-   * Files in this directory
-   * @private
-   */
+  private _name: string = null;
   private _files: File[] = null;
-  /**
-   * The size of this directory - all the way down
-   * @private
-   */
   private _size: number = 0;
 
   /**
    * Directory Constructor
    */
-  constructor() { }
+  constructor( name: string ) {
+    this._name = name;
+  }
+
+  /**
+   * Accessor for name field
+   */
+  get Name() {
+    return this._name;
+  }
 }
 
 class File {
